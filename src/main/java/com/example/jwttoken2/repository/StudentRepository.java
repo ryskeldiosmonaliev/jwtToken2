@@ -10,7 +10,7 @@ public interface StudentRepository extends JpaRepository<Student,Long> {
 
 //
     @Query("SELECT COUNT(s.groups.id) FROM Student s WHERE s.groups.id=?1")
-    Long countByIdT(Long id);
+    Long countByIdTeacher(Long id);
 
     @Override
     long count();

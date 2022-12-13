@@ -7,6 +7,8 @@ import com.example.jwttoken2.entity.Company;
 import com.example.jwttoken2.entity.Courses;
 import com.example.jwttoken2.repository.CompanyRepository;
 import com.example.jwttoken2.repository.CoursesRepository;
+import org.modelmapper.Converters;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -26,9 +28,16 @@ public class CoursesServiceImpl {
     }
 
     public Courses create(CourseRequest request, Long companyId){
-        Company company = companyRepository.findById(companyId).get();
-        request.setCompany(company);
-        Courses courses = mapToEntity(request);
+        //Company company = companyRepository.findById(companyId).get();
+        Optional<Company> company = companyRepository.findById(companyId);
+        Courses courses = new Courses();
+        BeanUtils.copyProperties(request,courses);
+        courses.setCourseName(request.getCourseName());
+        courses.setDuration(request.getDurationMonth());
+        courses.setCompanyId(request.getCompanyId());
+        courses.setCompany(company.get());
+       // request.setCompany(company.get());
+
      return    coursesRepository.save(courses);
 
     }

@@ -52,8 +52,8 @@ public class StudentServiceImpl {
         return studentRepository.findAll(Sort.by(Sort.Direction.ASC,sorting));
     }
 
-    public Long countByIdT(Long id) {
-        return studentRepository.countByIdT(id);
+    public Long countByIdTeacher(Long id) {
+        return studentRepository.countByIdTeacher(id);
     }
 
     public void deleteById(Long id) {

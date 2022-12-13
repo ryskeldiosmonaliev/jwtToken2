@@ -15,8 +15,7 @@ public interface GroupsRepository extends JpaRepository<Groups, Long> {
     @Query("select s from Student s")
     List<Student>getByPagination(PageRequest pageRequest);
 
-    @Query("SELECT s FROM Student s WHERE s.firstName LIKE %?1% " +
-            "OR s.lastName LIKE %?1%")
+    @Query("SELECT s FROM Student s WHERE s.firstName LIKE %?1% " )
     List<Student> findByStudents(String search);
 
 }

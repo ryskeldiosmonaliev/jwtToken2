@@ -53,9 +53,9 @@ public class TeacherController {
         return teacherService.getAllTeacher();
     }
     @GetMapping("/count/{id}")
-    public Long countByIdT(@PathVariable("id") Long id) {
+    public Long countById(@PathVariable("id") Long id) {
         teacherService.getById(id);
-        return studentService.countByIdT(id);
+        return studentService.countByIdTeacher(id);
     }
 }
 

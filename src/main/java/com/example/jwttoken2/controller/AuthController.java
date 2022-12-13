@@ -50,7 +50,7 @@ public class AuthController {
     }
 
 
-    @PostMapping("registration")
+    @PostMapping("/registration")
     @Operation(summary = "registration", description = "user can registration")
     public UserResponse create(@RequestBody UserRequest request){
         return userService.createUser(request);
